@@ -37,7 +37,10 @@ public class PessoaController {
 
 	@Autowired
 	PessoaService pessoaService;
-
+	
+	// API
+	// http://localhost:8088/api/pessoa/
+	
 	@GetMapping(value = "/{id}", headers = { Const.ACCEPT_JSON })
 	public ResponseEntity<?> consultarPorId(HttpServletRequest request, @PathVariable("id") Long id) {
 		Optional<Pessoa> pessoa = this.pessoaService.findById(id);
@@ -49,8 +52,6 @@ public class PessoaController {
 	public ResponseEntity<?> consultarTodas() {
 		return new ResponseEntity<>(this.pessoaService.listarPessoas(), HttpStatus.OK);		
 	}
-
-	// http://localhost:8088/api/pessoa/cadastrar/	
 
 	// Cadastrar e alterar um usuario
 	@PostMapping(value = "/cadastrar", headers = { Const.ACCEPT_JSON })
